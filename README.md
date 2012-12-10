@@ -59,6 +59,13 @@ Examples:
     
     ldcell -x 2 -y 2 -z 4 -r -t c [inputfile] -o [outputfile]
 
+3. Generate a Gromacs config file using utils/gengro.awk
+
+    tail -n +6 | awk -f gengro.awk > conf.gro
+
+   You need to add title, number of atoms, and cell vectors in conf.gro
+   manually. gengro.awk must be customized to suit your needs (at least for now).
+
 Build
 -----
 
