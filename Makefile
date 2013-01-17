@@ -1,23 +1,34 @@
-CFLAGS=-c -O2 -std=c99 -Wall -DNDEBUG
-LIBS=-lm
+CPPFLAGS = -DNDEBUG
+CFLAGS = -c -O2 -std=c99 -Wall
+LIBS = -lm
 
-all: bin/ldcell
+APP = bin/ldcell
+BUILDDIR = build
 
-dev: CFLAGS=-c -std=c99 -Wall -g
-dev: all
+.PHONY: all release debug clean
 
-build:
-	@mkdir -p build
+all: release
+
+release: $(APP)
+
+debug: CFLAGS = -c -g -std=c99 -Wall
+debug: CPPFLAGS = -UNDEBUG
+debug: $(APP)
+
+$(BUILDDIR):
+	@mkdir -p $@
 	@mkdir -p bin
 
-bin/ldcell: build build/ldcell.o build/numhelpers.o
-	$(CC) -o $@ $(LIBS) build/ldcell.o build/numhelpers.o
+build/numhelpers.o build/ldcell.o: | $(BUILDDIR)
 
-build/numhelpers.o: build src/numhelpers.c src/numhelpers.h
-	$(CC) $(CFLAGS) -o $@ src/numhelpers.c
+$(APP): build/ldcell.o build/numhelpers.o
+	$(CC) -o $@ $(LIBS) $^
 
-build/ldcell.o: build src/ldcell.c src/numhelpers.h
-	$(CC) $(CFLAGS) -o $@ src/ldcell.c
+build/numhelpers.o: src/numhelpers.c src/numhelpers.h
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $<
+
+build/ldcell.o: src/ldcell.c src/numhelpers.h
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
 clean:
-	rm -f build/* bin/*
+	$(RM) $(BUILDDIR)/* bin/*
