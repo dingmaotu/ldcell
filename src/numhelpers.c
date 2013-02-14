@@ -17,15 +17,18 @@
  */
 
 #include <math.h>
+#include "macro.h"
 #include "numhelpers.h"
 
 real dot_prod(const real a[3], const real b[3])
 {
     real sum = 0.0;
-
+/*
     DO(i,3)
         sum += a[i]*b[i];
     END
+*/
+    VEC(sum += V1(a) * V1(b), 3);
 
     return sum;
 }
@@ -39,9 +42,12 @@ void cross_prod(real a[3], real b[3], real c[3])
 
 void real_prod(real a[3], real num)
 {
+/*
     DO(i,3)
         a[i] *= num;
     END
+*/
+    VEC(V1(a) *= num, 3);
 }
 
 real cell_volume(real cell[3][3])

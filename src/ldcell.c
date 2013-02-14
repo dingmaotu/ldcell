@@ -1,4 +1,6 @@
 /*
+ * ldcell.c -- main for ldcell
+ *
  * ldcell -- a simple crystal cell processing utility 
  * Copyright (C) 2012 Li Ding <iamliding at gmail.com>
  *
@@ -24,6 +26,7 @@
 #include <string.h>
 #include <getopt.h>
 
+#include "macro.h"
 #include "numhelpers.h"
 
 typedef real (*PCoords)[3];

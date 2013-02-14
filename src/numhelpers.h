@@ -1,4 +1,6 @@
 /*
+ * numhelpers.h -- convenient numeric functions
+ *
  * ldcell -- a simple crystal cell processing utility 
  * Copyright (C) 2012 Li Ding <iamliding at gmail.com>
  *
@@ -22,8 +24,6 @@
 #define X 0
 #define Y 1
 #define Z 2
-#define DO(i,N) for(int i = 0; i < N; ++i) {
-#define END }
 #define real double
 #define ROP "%lf"
 
