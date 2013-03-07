@@ -293,7 +293,8 @@ int main(int argc, char *argv[])
     }
 
     if(show_vol){ 
-        fprintf(stderr, "Cell volume is "ROP".\n", cell_volume(cdata.cell));
+        // fprintf(stderr, "Cell volume is "ROP".\n", cell_volume(cdata.cell));
+        fprintf(stdout, ROP"\n", cell_volume(cdata.cell));
         exit(0);
     }
 

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+desc=$1
+shift
+
+awk 'BEGIN { print "'"$desc"'" } {print} NR==4 {print "'"$*"'"} '

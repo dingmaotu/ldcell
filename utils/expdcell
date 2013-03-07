@@ -1,0 +1,19 @@
+#!/bin/bash
+
+cellfile=${1?"Give me a cellfile!"}
+nx=${2:-1}
+ny=${3:-1}
+nz=${4:-1}
+
+factor=${5:-0}
+
+if [ $factor == 0 ]
+then
+    cat $cellfile | ldcell -x $nx -y $ny -z $nz -r -t c
+    exit 0
+fi
+
+vol=`ldcell -v $cellfile`
+
+awk -vvol=$vol -vfac=$factor 'NR==1 {print -vol*(1+fac)} NR > 1' $cellfile | \
+ldcell -x $nx -y $ny -z $nz -r -t c
