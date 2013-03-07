@@ -59,24 +59,24 @@ To see the help message of ldcell, run `ldcell -h`.
 
 Examples:
 
-1. To calculate the volume of the cell
+1.  To calculate the volume of the cell
 
-    ldcell -v [inputfile]
+        ldcell -v [inputfile]
 
-2. To expand the cell to 2x2x4, with cartesian coordinates output 
-    
-    ldcell -x 2 -y 2 -z 4 -r -t c [inputfile] -o [outputfile]
+2.  To expand the cell to 2x2x4, with cartesian coordinates output 
+     
+        ldcell -x 2 -y 2 -z 4 -r -t c [inputfile] -o [outputfile]
 
-   The inputfile and outputfile are both optional. If omitted, stdin
-   and stdout would be used.
+    The inputfile and outputfile are both optional. If omitted, stdin
+    and stdout would be used.
 
-3. Generate a Gromacs config file using utils scripts:
+3.  Generate a Gromacs config file using utils scripts:
 
-   expdcell mgo.cell 2 2 4 -0.1 | \
-   cell2xdat "MgO Periclase 2x2x4 10% smaller" Mg O | \
-   xdat2gro > conf.gro
+        expdcell mgo.cell 2 2 4 -0.1 | \
+        cell2xdat "MgO Periclase 2x2x4 10% smaller" Mg O | \
+        xdat2gro > conf.gro
 
-   You need to give cell2xdat a title and names of each kind of atoms.
+    You need to give cell2xdat a title and names of each kind of atoms.
 
 Build and Install
 -----------------
@@ -104,15 +104,15 @@ Changes
 
 ### 2013-3-7
 
-1. Removed gengro.awk, which is too specific for my problems. Added expdcell,
-   cell2xdat, xdat2gro. These scripts are fairly general and maybe useful to
-   you.
+1.  Removed gengro.awk, which is too specific for my problems. Added expdcell,
+    cell2xdat, xdat2gro. These scripts are fairly general and maybe useful to
+    you.
 
-2. `ldcell -v` returns a number (volume of cell) instead of a message, making
-   it easy to use it in a script, such as `cellvol=$(ldcell -v $cellfile)`.
+2.  `ldcell -v` returns a number (volume of cell) instead of a message, making
+    it easy to use it in a script, such as `cellvol=$(ldcell -v $cellfile)`.
 
-3. Added macro.h, a set of general C macros that vectorize C array operations,
-   like Fortran. It makes writing numeric C code easier.
+3.  Added macro.h, a set of general C macros that vectorize C array operations,
+    like Fortran. It makes writing numeric C code easier.
 
 Acknowledgement
 ---------------
