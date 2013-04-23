@@ -9,11 +9,11 @@ factor=${5:-0}
 
 if [ $factor == 0 ]
 then
-    cat $cellfile | ldcell -x $nx -y $ny -z $nz -r -t c
+    cat $cellfile | ldcell -x $nx -y $ny -z $nz -r
     exit 0
 fi
 
 vol=`ldcell -v $cellfile`
 
 awk -vvol=$vol -vfac=$factor 'NR==1 {print -vol*(1+fac)} NR > 1' $cellfile | \
-ldcell -x $nx -y $ny -z $nz -r -t c
+ldcell -x $nx -y $ny -z $nz -r

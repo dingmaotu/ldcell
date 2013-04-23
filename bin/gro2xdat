@@ -1,0 +1,3 @@
+#!/bin/bash
+
+awk -f $LDCELL/share/ldcell/awklib/confgro.awk -f $LDCELL/share/ldcell/awklib/gro2xdat.awk

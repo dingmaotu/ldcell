@@ -43,14 +43,14 @@ Here is an example (mgo.cell) of a basic MgO Periclase cell:
     0  0.4217  0
     0  0  0.4217
     4  4
-    0.0        0.0        0.0   
-    0.5        0.0        0.5   
-    0.5        0.5        0.0   
-    0.0        0.5        0.5   
-    0.0        0.0        0.5   
-    0.5        0.0        0.0   
-    0.5        0.5        0.5   
-    0.0        0.5        0.0   
+    0.0        0.0        0.0
+    0.5        0.0        0.5
+    0.5        0.5        0.0
+    0.0        0.5        0.5
+    0.0        0.0        0.5
+    0.5        0.0        0.0
+    0.5        0.5        0.5
+    0.0        0.5        0.0
 
 Usage
 -----
@@ -97,10 +97,25 @@ bash you need to add this to your `.bash_profile` (or `.profile`)
 
     export LDCELL=/path/to/ldcell
 
-`xdat2gro` will use this to find its awk libraries.
+`xdat2gro` and alike will use this to find its awk libraries.
+
+Optionally, you can create symbol links to the utilities in the `bin`
+directory or add `bin` to you `PATH`.
 
 Changes
 -------
+
+### 2013-4-23
+
+1.  Add `gro2xdat` which does the inverse of `xdat2gro`
+
+2.  Add `xdat2pos` which converts XDATCAR-like file to POSCAR-like file
+
+3.  Move all utilities to `bin` and remove the `utils` directory
+
+4.  The result of `expdcell` uses Direct Coordinates by default, which
+    stays consistent with the definition of the cell file
+
 
 ### 2013-3-7
 
@@ -111,7 +126,7 @@ Changes
 2.  `ldcell -v` returns a number (volume of cell) instead of a message, making
     it easy to use it in a script, such as `cellvol=$(ldcell -v $cellfile)`.
 
-3.  Added macro.h, a set of general C macros that vectorize C array operations,
+3.  Added macro.h, a set of general C macros that vectorizes C array operations,
     like Fortran. It makes writing numeric C code easier.
 
 Acknowledgement

@@ -31,4 +31,4 @@ build/ldcell.o: src/ldcell.c src/numhelpers.h
 	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
 clean:
-	$(RM) $(BUILDDIR)/* bin/*
+	$(RM) $(BUILDDIR)/* bin/ldcell

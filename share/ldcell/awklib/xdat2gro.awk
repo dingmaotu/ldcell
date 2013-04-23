@@ -29,7 +29,7 @@ NR >= 8 {
        at -= enums[i]
        i++;
    }
-   groline(atnum, res[i], atnum, atom[i], $1, $2, $3);
+   groline(atnum, res[i], atnum, atom[i], $1*a, $2*b, $3*c);
 }
 
 END {
